@@ -9,7 +9,7 @@ const secretMessage = "Brewers in 5"
 document,addEventListener('DOMContentLoaded', () => {
   try {
     localStorage.setItem(secretKey, secretMessage);
-    console.log('Secret message stored! Key: "${secretKey}"');
+    console.log( 'Secret message stored! Key: "${secretKey}" ');
     console.log('Message: "${secretMessage}" ');
   } catch (e) {
     console.error("Error:", e);
