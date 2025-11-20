@@ -1,10 +1,14 @@
+// elemnts to interact with
 const hours = new Date().getHours() // get the current hour
-
 const isMorning = hours >= 4 && hours < 12 // is it morning?
 const isAfternoon = hours >= 12 && hours < 17 // is it afternoon?
 const isEvening = hours >= 17 || hours < 4 // is it evening?
 const secretKey = "It's a secret to everybody.";
-const secretMessage = "Brewers in 5"
+const secretMessage = "Brewers in 6"
+const userInput = document.getElementById('todo-input')
+const addButton = document.getElementById('add-button');
+const taskInput = document.getElementById('task-input');
+const todoList = document.getElementById('todo-list');
 
 document,addEventListener('DOMContentLoaded', () => {
   try {
@@ -13,8 +17,7 @@ document,addEventListener('DOMContentLoaded', () => {
     console.log('Message: "${secretMessage}" ');
   } catch (e) {
     console.error("Error:", e);
-  }
-   
+  }   
 })
  
 if (isMorning) {
@@ -65,4 +68,26 @@ setInterval(() => {
 }, 5000)
 
 showImages()
+const todos = JSON.parse(localStorage.getItem('todo-list') || '[]')
 
+
+todos.push({ text: taskInput, completed: false })
+
+const userData = JSON.stringify({ todos: [] })
+
+const getUserData = () => {
+    const data = localStorage.getItem('userData')
+    return data ? JSON.parse(data) : JSON.parse(defaultUserData)
+}
+// save user data to local storage
+const setUserData = (data) => {
+    localStorage.setItem('userData', JSON.stringify(data))
+}
+
+const renderTodos = () => {
+    const userData = getUserData()
+    todoList.innerHTML = ''
+    userData.todos.map((todo, index) => {
+        const li = document.createElement('li')
+    })
+  }
